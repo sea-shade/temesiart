@@ -8,7 +8,7 @@
 
 import { GalleryData, Lang, Translations } from '../types';
 
-export const BASE_PATH = "/temesi-portfolio"; // ← change to your repo name
+export const BASE_PATH = "/temesiart";
 
 export const i18n: Record<Lang, Translations> = {
   en: {
@@ -157,37 +157,29 @@ A Magyar Alkotóművészek Országos Egyesületének tagja.`,
 
 export const gallery: GalleryData = {
   portraits: [
-    { src: "http://www.temesi.hu/images/megrendeles/babas_csalad_800.jpg", alt: "Family portrait", title: "Family" },
-    { src: "http://www.temesi.hu/images/megrendeles/gyerekek_keszkep_800.jpg", alt: "Children portrait", title: "Children" },
-    { src: "http://www.temesi.hu/images/megrendeles/szulok_kettos_Temesi_2010_800.jpg", alt: "Double portrait of parents", title: "Parents" },
-    { src: "http://www.temesi.hu/images/megrendeles/testverek_Temesi_2010_800.jpg", alt: "Siblings portrait", title: "Siblings" },
-    { src: "http://www.temesi.hu/images/megrendeles/testverek_800.jpg", alt: "Pastel siblings", title: "Siblings — Pastel" },
-    { src: "http://www.temesi.hu/images/megrendeles/kislany_voros.jpg", alt: "Girl portrait", title: "Girl" },
-    { src: "http://www.temesi.hu/images/megrendeles/radnoti_800.jpg", alt: "Caricature of Radnóti", title: "Radnóti" },
-    { src: "http://www.temesi.hu/images/megrendeles/bajszos2_1000.jpg", alt: "Caricature with moustache", title: "Moustached Gentleman" },
-    { src: "http://www.temesi.hu/images/megrendeles/akvarell2.jpg", alt: "Ildikó — watercolour portrait", title: "Ildikó" },
-    { src: "http://www.temesi.hu/images/megrendeles/olaj1.jpg", alt: "Oil portrait", title: "Oil Portrait" },
+    { src: "/temesiart/images/megrendeles/babas_csalad_800.jpg", alt: "Family portrait", title: "Family" },
+    { src: "/temesiart/images/megrendeles/gyerekek_keszkep_800.jpg", alt: "Children portrait", title: "Children" },
+    { src: "/temesiart/images/megrendeles/szulok_kettos_Temesi_2010_800.jpg", alt: "Double portrait of parents", title: "Parents" },
+    { src: "/temesiart/images/megrendeles/testverek_Temesi_2010_800.jpg", alt: "Siblings portrait", title: "Siblings" },
+    { src: "/temesiart/images/megrendeles/testverek_800.jpg", alt: "Pastel siblings", title: "Siblings — Pastel" },
+    { src: "/temesiart/images/megrendeles/kislany_voros.jpg", alt: "Girl portrait", title: "Girl" },
+    { src: "/temesiart/images/megrendeles/radnoti_800.jpg", alt: "Caricature of Radnóti", title: "Radnóti" },
+    { src: "/temesiart/images/megrendeles/bajszos2_1000.jpg", alt: "Caricature with moustache", title: "Moustached Gentleman" },
+    { src: "/temesiart/images/megrendeles/akvarell2.jpg", alt: "Ildikó — watercolour portrait", title: "Ildikó" },
+    { src: "/temesiart/images/megrendeles/olaj1.jpg", alt: "Oil portrait", title: "Oil Portrait" },
   ],
   fineArt: [
-    { src: "http://www.temesi.hu/images/akvarell/01.jpg", alt: "Annunciation — watercolour", title: "Annunciation" },
-    { src: "http://www.temesi.hu/images/akvarell/02.jpg", alt: "Ildikó — watercolour", title: "Ildikó" },
-    { src: "http://www.temesi.hu/images/akvarell/akvarell_Nike.jpg", alt: "Nike — watercolour", title: "Nike" },
-    { src: "http://www.temesi.hu/images/akvarell/Lelet_I.jpg", alt: "Artifact I — watercolour", title: "Artifact I" },
-    { src: "http://www.temesi.hu/images/akvarell/Fallen_angel.jpg", alt: "Fallen Angel — watercolour", title: "Fallen Angel" },
-    { src: "http://www.temesi.hu/images/akvarell/Octopus.jpg", alt: "Octopus — watercolour", title: "Octopus" },
-    { src: "http://www.temesi.hu/images/akvarell/Tronus_I.jpg", alt: "Throne I — watercolour", title: "Throne I" },
-    { src: "http://www.temesi.hu/images/akvarell/Zaszlo_III.jpg", alt: "Flag III — watercolour", title: "Flag III" },
+    { src: "/temesiart/images/akvarell/01.jpg", alt: "Annunciation — watercolour", title: "Annunciation" },
+    { src: "/temesiart/images/akvarell/02.jpg", alt: "Ildikó — watercolour", title: "Ildikó" },
+    { src: "/temesiart/images/akvarell/akvarell_Nike.jpg", alt: "Nike — watercolour", title: "Nike" },
+    { src: "/temesiart/images/akvarell/Lelet_I.jpg", alt: "Artifact I — watercolour", title: "Artifact I" },
+    { src: "/temesiart/images/akvarell/Fallen_angel.jpg", alt: "Fallen Angel — watercolour", title: "Fallen Angel" },
+    { src: "/temesiart/images/akvarell/Octopus.jpg", alt: "Octopus — watercolour", title: "Octopus" },
+    { src: "/temesiart/images/akvarell/Tronus_I.jpg", alt: "Throne I — watercolour", title: "Throne I" },
+    { src: "/temesiart/images/akvarell/Zaszlo_III.jpg", alt: "Flag III — watercolour", title: "Flag III" },
   ],
-  videoGames: [
-    { src: "http://www.temesi.hu/images/videogames/busytown.jpg", alt: "Busytown game graphics", title: "Busytown (1993)" },
-    { src: "http://www.temesi.hu/images/videogames/powerrangers.jpg", alt: "Power Rangers Zeo game", title: "Power Rangers Zeo (1996)" },
-    { src: "http://www.temesi.hu/images/videogames/grossology.jpg", alt: "Grossology game", title: "Grossology (1997)" },
-    { src: "http://www.temesi.hu/images/videogames/concept01.jpg", alt: "Concept art", title: "Concept Art" },
-  ],
-  bookCovers: [
-    { src: "http://www.temesi.hu/images/konyvborito/borito01.jpg", alt: "Book cover", title: "Book Cover" },
-    { src: "http://www.temesi.hu/images/konyvborito/borito02.jpg", alt: "Book cover", title: "Book Cover" },
-    { src: "http://www.temesi.hu/images/konyvborito/borito03.jpg", alt: "Book cover", title: "Book Cover" },
-    { src: "http://www.temesi.hu/images/konyvborito/borito04.jpg", alt: "Book cover", title: "Book Cover" },
-  ],
+  // TODO: add images to public/images/videogames/ and uncomment
+  videoGames: [],
+  // TODO: add images to public/images/konyvborito/ and uncomment
+  bookCovers: [],
 };
