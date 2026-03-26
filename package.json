@@ -2,7 +2,7 @@
   "name": "temesi-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://YOUR_GITHUB_USERNAME.github.io/temesi-portfolio",
+  "homepage": "https://sea-shade.github.io/temesiart",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
