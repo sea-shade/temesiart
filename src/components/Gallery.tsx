@@ -21,7 +21,7 @@ function LightBox({ image, onClose }: LightBoxProps) {
         justifyContent: 'center',
         padding: 'var(--space-8)',
         cursor: 'zoom-out',
-        backdropFilter: 'blur(4px)',
+        backdropFilter: 'blur(6px)',
       }}
     >
       <div style={{ position: 'relative', maxWidth: 900, width: '100%' }}>
@@ -41,9 +41,10 @@ function LightBox({ image, onClose }: LightBoxProps) {
             marginTop: 'var(--space-4)',
             fontFamily: 'var(--font-display)',
             fontStyle: 'italic',
-            fontSize: 'var(--text-lg)',
-            color: 'var(--color-bg)',
+            fontSize: 'var(--text-base)',
+            color: 'rgba(255,255,255,0.7)',
             textAlign: 'center',
+            letterSpacing: '0.02em',
           }}>{image.title}</p>
         )}
       </div>
@@ -61,50 +62,37 @@ interface GalleryProps {
 export default function Gallery({ id, section, images, alt }: GalleryProps) {
   const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
 
-  const bgColor = alt ? 'var(--color-surface)' : 'var(--color-bg)';
+  if (images.length === 0) return null;
 
   return (
     <section
       id={id}
+      className="section-pad"
       style={{
-        padding: 'var(--space-24) var(--space-8)',
-        background: bgColor,
+        background: alt ? 'var(--color-surface)' : 'var(--color-bg)',
         borderTop: '1px solid var(--color-border)',
       }}
     >
       <div style={{ maxWidth: 'var(--max-width)', margin: '0 auto' }}>
-        {/* Section header */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'baseline',
-          gap: 'var(--space-6)',
-          marginBottom: 'var(--space-12)',
-        }}>
+        <div className="section-header">
           <h2 style={{
             fontFamily: 'var(--font-display)',
-            fontWeight: 300,
+            fontWeight: 400,
             fontSize: 'var(--text-2xl)',
             letterSpacing: '-0.01em',
+            whiteSpace: 'nowrap',
           }}>
             {section.title}
           </h2>
-          <div style={{ flex: 1, height: '1px', background: 'var(--color-border)' }} />
-          <p style={{
-            fontFamily: 'var(--font-display)',
-            fontStyle: 'italic',
-            fontSize: 'var(--text-sm)',
-            color: 'var(--color-muted)',
-            maxWidth: 320,
-            textAlign: 'right',
-          }}>
+          <div className="section-header-rule" />
+          <p className="section-header-desc">
             {section.description}
           </p>
         </div>
 
-        {/* Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(200px, 100%), 1fr))',
           gap: 'var(--space-3)',
         }}>
           {images.map((img, i) => (
@@ -127,7 +115,7 @@ export default function Gallery({ id, section, images, alt }: GalleryProps) {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  transition: 'transform 600ms var(--ease)',
+                  transition: 'transform 500ms var(--ease)',
                   display: 'block',
                 }}
                 onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
@@ -147,8 +135,8 @@ export default function Gallery({ id, section, images, alt }: GalleryProps) {
                     left: 0,
                     right: 0,
                     padding: 'var(--space-3) var(--space-4)',
-                    background: 'linear-gradient(transparent, rgba(28,26,22,0.7))',
-                    color: '#f5f2ec',
+                    background: 'linear-gradient(transparent, rgba(0,0,0,0.65))',
+                    color: '#fff',
                     fontFamily: 'var(--font-display)',
                     fontStyle: 'italic',
                     fontSize: 'var(--text-sm)',

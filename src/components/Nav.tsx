@@ -7,41 +7,9 @@ interface NavProps {
   setLang: (lang: Lang) => void;
 }
 
-const navStyle: React.CSSProperties = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  zIndex: 100,
-  height: 'var(--nav-height)',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '0 var(--space-8)',
-  transition: 'background var(--duration) var(--ease), border-color var(--duration) var(--ease)',
-  borderBottom: '1px solid transparent',
-};
-
-const logoStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-display)',
-  fontWeight: 300,
-  fontSize: 'var(--text-lg)',
-  letterSpacing: '0.04em',
-  color: 'var(--color-ink)',
-};
-
-const linkStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-mono)',
-  fontSize: 'var(--text-xs)',
-  letterSpacing: '0.1em',
-  textTransform: 'uppercase',
-  color: 'var(--color-muted)',
-  transition: 'color var(--duration)',
-  padding: '2px 0',
-};
-
 export default function Nav({ t, lang, setLang }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -49,65 +17,158 @@ export default function Nav({ t, lang, setLang }: NavProps) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth > 768) setMenuOpen(false); };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   const nav = t.nav;
+  const links: [string, string][] = [
+    ['#portraits', nav.portraits],
+    ['#fine-art', nav.fineArt],
+    ['#video-games', nav.videoGames],
+    ['#book-covers', nav.bookCovers],
+    ['#about', nav.about],
+    ['#contact', nav.contact],
+  ];
+
+  const linkStyle: React.CSSProperties = {
+    fontFamily: 'var(--font-ui)',
+    fontSize: 'var(--text-xs)',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    color: 'var(--color-muted)',
+    transition: 'color var(--duration)',
+    fontWeight: 500,
+  };
+
+  const mobileLinkStyle: React.CSSProperties = {
+    fontFamily: 'var(--font-ui)',
+    fontSize: 'var(--text-lg)',
+    color: 'var(--color-ink)',
+    fontWeight: 400,
+    padding: 'var(--space-2) 0',
+    borderBottom: '1px solid var(--color-border)',
+  };
 
   return (
-    <nav
-      style={{
-        ...navStyle,
-        background: scrolled ? 'var(--color-bg)' : 'transparent',
-        borderBottomColor: scrolled ? 'var(--color-border)' : 'transparent',
-      }}
-    >
-      <a href="#top" style={logoStyle}>Temesi Péter</a>
-
-      <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>
-        {([
-          ['#portraits', nav.portraits],
-          ['#fine-art', nav.fineArt],
-          ['#video-games', nav.videoGames],
-          ['#book-covers', nav.bookCovers],
-          ['#about', nav.about],
-          ['#contact', nav.contact],
-        ] as [string, string][]).map(([href, label]) => (
-          <a
-            key={href}
-            href={href}
-            style={linkStyle}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-muted)')}
-          >
-            {label}
-          </a>
-        ))}
-
-        {/* Language toggle */}
-        <div style={{
+    <>
+      <nav
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          height: 'var(--nav-height)',
           display: 'flex',
-          gap: '2px',
-          borderLeft: '1px solid var(--color-border)',
-          paddingLeft: 'var(--space-6)',
-          marginLeft: 'var(--space-2)',
-        }}>
-          {(['en', 'hu'] as Lang[]).map(l => (
-            <button
-              key={l}
-              onClick={() => setLang(l)}
-              style={{
-                ...linkStyle,
-                fontFamily: 'var(--font-mono)',
-                fontSize: 'var(--text-xs)',
-                padding: '2px 6px',
-                color: lang === l ? 'var(--color-accent)' : 'var(--color-muted)',
-                fontWeight: lang === l ? 400 : 300,
-                borderBottom: lang === l ? '1px solid var(--color-accent)' : '1px solid transparent',
-              }}
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 clamp(var(--space-4), 5vw, var(--space-8))',
+          background: (scrolled || menuOpen) ? 'var(--color-bg)' : 'transparent',
+          borderBottom: (scrolled || menuOpen) ? '1px solid var(--color-border)' : '1px solid transparent',
+          transition: 'background var(--duration) var(--ease), border-color var(--duration) var(--ease)',
+        }}
+      >
+        <a
+          href="#top"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 400,
+            fontSize: 'var(--text-lg)',
+            letterSpacing: '0.01em',
+            color: 'var(--color-ink)',
+          }}
+        >
+          Temesi Péter
+        </a>
+
+        {/* Desktop links */}
+        <div className="nav-links">
+          {links.map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-ink)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-muted)')}
             >
-              {l.toUpperCase()}
-            </button>
+              {label}
+            </a>
           ))}
+
+          <div style={{
+            display: 'flex',
+            gap: '2px',
+            borderLeft: '1px solid var(--color-border)',
+            paddingLeft: 'var(--space-6)',
+            marginLeft: 'var(--space-2)',
+          }}>
+            {(['en', 'hu'] as Lang[]).map(l => (
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                style={{
+                  ...linkStyle,
+                  padding: '2px 6px',
+                  color: lang === l ? 'var(--color-ink)' : 'var(--color-muted)',
+                  fontWeight: lang === l ? 500 : 400,
+                  borderBottom: lang === l ? '1.5px solid var(--color-ink)' : '1.5px solid transparent',
+                }}
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
-    </nav>
+
+        {/* Hamburger */}
+        <button
+          className={`nav-hamburger${menuOpen ? ' open' : ''}`}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          <span /><span /><span />
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="nav-mobile-menu">
+          {links.map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              style={mobileLinkStyle}
+              onClick={() => setMenuOpen(false)}
+            >
+              {label}
+            </a>
+          ))}
+          <div style={{ display: 'flex', gap: 'var(--space-4)', marginTop: 'var(--space-4)' }}>
+            {(['en', 'hu'] as Lang[]).map(l => (
+              <button
+                key={l}
+                onClick={() => { setLang(l); setMenuOpen(false); }}
+                style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 'var(--text-sm)',
+                  fontWeight: lang === l ? 500 : 400,
+                  color: lang === l ? 'var(--color-ink)' : 'var(--color-muted)',
+                  borderBottom: lang === l ? '1.5px solid var(--color-ink)' : '1.5px solid transparent',
+                  padding: '2px 4px',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {l.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 }

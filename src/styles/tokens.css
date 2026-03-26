@@ -1,24 +1,19 @@
-/* ============================================================
-   TEMESI PORTFOLIO — DESIGN TOKENS
-   Change variables here to restyle the entire site instantly.
-   ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
 
 :root {
   /* --- Palette --- */
-  --color-bg:        #f5f2ec;   /* warm off-white, aged paper */
-  --color-surface:   #ede9e0;
-  --color-ink:       #1c1a16;   /* near-black */
-  --color-muted:     #7a7165;
-  --color-accent:    #8b3a2a;   /* deep terracotta / old ink */
-  --color-accent-lt: #c4614a;
-  --color-border:    #d4cfc5;
-  --color-overlay:   rgba(28, 26, 22, 0.85);
+  --color-bg:        #ffffff;
+  --color-surface:   #f5f5f5;
+  --color-ink:       #111111;
+  --color-muted:     #737373;
+  --color-accent:    #111111;
+  --color-accent-lt: #525252;
+  --color-border:    #e5e5e5;
+  --color-overlay:   rgba(0, 0, 0, 0.88);
 
   /* --- Typography --- */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-mono:    'DM Mono', 'Courier New', monospace;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-ui:      'Inter', system-ui, sans-serif;
 
   --text-xs:   0.72rem;
   --text-sm:   0.85rem;
@@ -43,13 +38,13 @@
 
   /* --- Layout --- */
   --max-width: 1200px;
-  --nav-height: 64px;
+  --nav-height: 60px;
   --radius-sm: 2px;
   --radius:    4px;
 
   /* --- Transitions --- */
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --duration: 280ms;
+  --duration: 220ms;
 }
 
 /* ============================================================
@@ -70,8 +65,8 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-ink);
-  font-family: var(--font-display);
-  font-weight: 300;
+  font-family: var(--font-ui);
+  font-weight: 400;
   font-size: var(--text-base);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -94,14 +89,127 @@ button {
   background: none;
 }
 
-/* Grain texture overlay on body */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 200px;
+/* ============================================================
+   RESPONSIVE LAYOUT UTILITIES
+   ============================================================ */
+
+.section-pad {
+  padding: var(--space-24) clamp(var(--space-4), 5vw, var(--space-8));
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+  align-items: start;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.section-header-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.section-header-desc {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  max-width: 320px;
+  text-align: right;
+  font-style: normal;
+}
+
+/* Nav */
+.nav-links {
+  display: flex;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--color-ink);
+  transition: transform var(--duration) var(--ease), opacity var(--duration);
+}
+
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.nav-mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-bg);
+    padding: var(--space-8) clamp(var(--space-4), 5vw, var(--space-8));
+    gap: var(--space-6);
+    z-index: 99;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .section-header-rule {
+    display: none;
+  }
+
+  .section-header-desc {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .section-pad {
+    padding: var(--space-16) clamp(var(--space-4), 5vw, var(--space-8));
+  }
 }
