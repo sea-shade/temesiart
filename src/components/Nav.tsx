@@ -12,14 +12,13 @@ export default function Nav({ t, lang, setLang }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
-    const onResize = () => { if (window.innerWidth > 768) setMenuOpen(false); };
+    const onResize = () => { if (window.innerWidth > 800) setMenuOpen(false); };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
@@ -37,51 +36,38 @@ export default function Nav({ t, lang, setLang }: NavProps) {
   const linkStyle: React.CSSProperties = {
     fontFamily: 'var(--font-ui)',
     fontSize: 'var(--text-xs)',
-    letterSpacing: '0.08em',
+    letterSpacing: '0.1em',
     textTransform: 'uppercase',
     color: 'var(--color-muted)',
     transition: 'color var(--duration)',
     fontWeight: 500,
   };
 
-  const mobileLinkStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-ui)',
-    fontSize: 'var(--text-lg)',
-    color: 'var(--color-ink)',
-    fontWeight: 400,
-    padding: 'var(--space-2) 0',
-    borderBottom: '1px solid var(--color-border)',
-  };
-
   return (
     <>
-      <nav
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-          height: 'var(--nav-height)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 clamp(var(--space-4), 5vw, var(--space-8))',
-          background: (scrolled || menuOpen) ? 'var(--color-bg)' : 'transparent',
-          borderBottom: (scrolled || menuOpen) ? '1px solid var(--color-border)' : '1px solid transparent',
-          transition: 'background var(--duration) var(--ease), border-color var(--duration) var(--ease)',
-        }}
-      >
-        <a
-          href="#top"
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontWeight: 400,
-            fontSize: 'var(--text-lg)',
-            letterSpacing: '0.01em',
-            color: 'var(--color-ink)',
-          }}
-        >
+      <nav style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        height: 'var(--nav-height)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 clamp(var(--space-4), 5vw, var(--space-8))',
+        background: (scrolled || menuOpen) ? 'var(--color-bg)' : 'transparent',
+        borderBottom: (scrolled || menuOpen) ? '1px solid var(--color-border)' : '1px solid transparent',
+        transition: 'background var(--duration) var(--ease), border-color var(--duration) var(--ease)',
+      }}>
+        {/* Logo */}
+        <a href="#top" style={{
+          fontFamily: 'var(--font-display)',
+          fontWeight: 400,
+          fontSize: 'var(--text-lg)',
+          color: 'var(--color-ink)',
+          letterSpacing: '0.01em',
+        }}>
           Temesi Péter
         </a>
 
@@ -92,13 +78,14 @@ export default function Nav({ t, lang, setLang }: NavProps) {
               key={href}
               href={href}
               style={linkStyle}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-ink)')}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent)')}
               onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-muted)')}
             >
               {label}
             </a>
           ))}
 
+          {/* Language toggle */}
           <div style={{
             display: 'flex',
             gap: '2px',
@@ -113,9 +100,10 @@ export default function Nav({ t, lang, setLang }: NavProps) {
                 style={{
                   ...linkStyle,
                   padding: '2px 6px',
-                  color: lang === l ? 'var(--color-ink)' : 'var(--color-muted)',
+                  color: lang === l ? 'var(--color-accent)' : 'var(--color-muted)',
                   fontWeight: lang === l ? 500 : 400,
-                  borderBottom: lang === l ? '1.5px solid var(--color-ink)' : '1.5px solid transparent',
+                  borderBottom: lang === l ? '1.5px solid var(--color-accent)' : '1.5px solid transparent',
+                  transition: 'color var(--duration)',
                 }}
               >
                 {l.toUpperCase()}
@@ -141,8 +129,15 @@ export default function Nav({ t, lang, setLang }: NavProps) {
             <a
               key={href}
               href={href}
-              style={mobileLinkStyle}
               onClick={() => setMenuOpen(false)}
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-xl)',
+                color: 'var(--color-ink)',
+                padding: 'var(--space-3) 0',
+                borderBottom: '1px solid var(--color-border)',
+                fontWeight: 400,
+              }}
             >
               {label}
             </a>
@@ -156,10 +151,10 @@ export default function Nav({ t, lang, setLang }: NavProps) {
                   fontFamily: 'var(--font-ui)',
                   fontSize: 'var(--text-sm)',
                   fontWeight: lang === l ? 500 : 400,
-                  color: lang === l ? 'var(--color-ink)' : 'var(--color-muted)',
-                  borderBottom: lang === l ? '1.5px solid var(--color-ink)' : '1.5px solid transparent',
+                  color: lang === l ? 'var(--color-accent)' : 'var(--color-muted)',
+                  borderBottom: lang === l ? '1.5px solid var(--color-accent)' : '1.5px solid transparent',
                   padding: '2px 4px',
-                  letterSpacing: '0.08em',
+                  letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                 }}
               >

@@ -10,7 +10,7 @@ export default function Footer({ t: _t }: FooterProps) {
     <footer style={{
       padding: 'var(--space-6) clamp(var(--space-4), 5vw, var(--space-8))',
       background: 'var(--color-ink)',
-      borderTop: '1px solid rgba(255,255,255,0.08)',
+      borderTop: '1px solid rgba(247,245,240,0.07)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -18,20 +18,20 @@ export default function Footer({ t: _t }: FooterProps) {
       gap: 'var(--space-2)',
     }}>
       <span style={{
-        fontFamily: 'var(--font-ui)',
-        fontSize: 'var(--text-xs)',
-        color: 'rgba(255,255,255,0.3)',
-        letterSpacing: '0.06em',
+        fontFamily: 'var(--font-display)',
+        fontStyle: 'italic',
+        fontSize: 'var(--text-sm)',
+        color: 'rgba(247,245,240,0.25)',
       }}>
-        © {new Date().getFullYear()} Temesi Péter
+        Temesi Péter
       </span>
       <span style={{
         fontFamily: 'var(--font-ui)',
         fontSize: 'var(--text-xs)',
-        color: 'rgba(255,255,255,0.3)',
+        color: 'rgba(247,245,240,0.2)',
         letterSpacing: '0.06em',
       }}>
-        Budapest, Hungary
+        © {new Date().getFullYear()} · Budapest, Hungary
       </span>
     </footer>
   );
