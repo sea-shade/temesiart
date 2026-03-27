@@ -172,7 +172,7 @@ figure:hover .gallery-caption {
    ============================================================ */
 
 .subcat-cards {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* ============================================================
@@ -199,7 +199,7 @@ figure:hover .gallery-caption {
   display: block;
   width: 22px;
   height: 1.5px;
-  background: var(--color-ink);
+  background: currentColor;
   transition: transform var(--duration) var(--ease), opacity var(--duration);
 }
 
@@ -272,7 +272,7 @@ figure:hover .gallery-caption {
   }
 
   .subcat-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

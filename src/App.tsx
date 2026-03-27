@@ -48,6 +48,7 @@ export default function App() {
           children={gallery.illustrationChildren}
           historical={gallery.illustrationHistorical}
           cartoon={gallery.illustrationCartoon}
+          nature={gallery.illustrationNature}
         />
         <About id="about" t={t} />
         <Contact id="contact" t={t} />

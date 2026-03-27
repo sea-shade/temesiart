@@ -65,7 +65,7 @@ function LightBox({ image, onClose }: LightBoxProps) {
   );
 }
 
-type SubcatKey = 'all' | 'children' | 'historical' | 'cartoon';
+type SubcatKey = 'all' | 'children' | 'historical' | 'cartoon' | 'nature';
 
 interface IllustrationSectionProps {
   id: string;
@@ -74,6 +74,7 @@ interface IllustrationSectionProps {
   children: GalleryImage[];
   historical: GalleryImage[];
   cartoon: GalleryImage[];
+  nature: GalleryImage[];
   alt?: boolean;
 }
 
@@ -84,6 +85,7 @@ export default function IllustrationSection({
   children,
   historical,
   cartoon,
+  nature,
   alt,
 }: IllustrationSectionProps) {
   const [active, setActive] = useState<SubcatKey>('all');
@@ -93,6 +95,7 @@ export default function IllustrationSection({
     ...children.map(img => ({ ...img, _subcat: 'children' as SubcatKey })),
     ...historical.map(img => ({ ...img, _subcat: 'historical' as SubcatKey })),
     ...cartoon.map(img => ({ ...img, _subcat: 'cartoon' as SubcatKey })),
+    ...nature.map(img => ({ ...img, _subcat: 'nature' as SubcatKey })),
   ];
 
   const visible = active === 'all'
@@ -104,6 +107,7 @@ export default function IllustrationSection({
     { key: 'children', label: subcats.children, cover: children[0] },
     { key: 'historical', label: subcats.historical, cover: historical[0] },
     { key: 'cartoon', label: subcats.cartoon, cover: cartoon[0] },
+    { key: 'nature', label: subcats.nature, cover: nature[0] },
   ];
 
   const hasAnyImages = allImages.length > 0;
@@ -115,6 +119,7 @@ export default function IllustrationSection({
     { key: 'children', label: subcats.children },
     { key: 'historical', label: subcats.historical },
     { key: 'cartoon', label: subcats.cartoon },
+    { key: 'nature', label: subcats.nature },
   ];
 
   return (
@@ -149,7 +154,7 @@ export default function IllustrationSection({
         {/* Subcategory category cards (pozsgay.hu style) */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(4, 1fr)',
           gap: 'var(--space-4)',
           marginBottom: 'var(--space-12)',
         }}

@@ -39,6 +39,7 @@ export interface IllustrationSubcats {
   children: string;
   historical: string;
   cartoon: string;
+  nature: string;
 }
 
 export interface SectionsTranslations {
@@ -82,4 +83,5 @@ export interface GalleryData {
   illustrationChildren: GalleryImage[];
   illustrationHistorical: GalleryImage[];
   illustrationCartoon: GalleryImage[];
+  illustrationNature: GalleryImage[];
 }

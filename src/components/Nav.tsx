@@ -34,12 +34,14 @@ export default function Nav({ t, lang, setLang }: NavProps) {
     ['#contact', nav.contact],
   ];
 
+  const onDark = !scrolled && !menuOpen;
+
   const linkStyle: React.CSSProperties = {
     fontFamily: 'var(--font-ui)',
     fontSize: 'var(--text-xs)',
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
-    color: 'var(--color-muted)',
+    color: onDark ? 'rgba(245,242,236,0.55)' : 'var(--color-muted)',
     transition: 'color var(--duration)',
     fontWeight: 500,
   };
@@ -66,8 +68,9 @@ export default function Nav({ t, lang, setLang }: NavProps) {
           fontFamily: 'var(--font-display)',
           fontWeight: 400,
           fontSize: 'var(--text-lg)',
-          color: 'var(--color-ink)',
+          color: onDark ? 'rgba(245,242,236,0.9)' : 'var(--color-ink)',
           letterSpacing: '0.01em',
+          transition: 'color var(--duration) var(--ease)',
         }}>
           Temesi Péter
         </a>
@@ -79,8 +82,8 @@ export default function Nav({ t, lang, setLang }: NavProps) {
               key={href}
               href={href}
               style={linkStyle}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-muted)')}
+              onMouseEnter={e => (e.currentTarget.style.color = onDark ? 'rgba(245,242,236,0.95)' : 'var(--color-accent)')}
+              onMouseLeave={e => (e.currentTarget.style.color = onDark ? 'rgba(245,242,236,0.55)' : 'var(--color-muted)')}
             >
               {label}
             </a>
@@ -90,7 +93,7 @@ export default function Nav({ t, lang, setLang }: NavProps) {
           <div style={{
             display: 'flex',
             gap: '2px',
-            borderLeft: '1px solid var(--color-border)',
+            borderLeft: `1px solid ${onDark ? 'rgba(245,242,236,0.15)' : 'var(--color-border)'}`,
             paddingLeft: 'var(--space-6)',
             marginLeft: 'var(--space-2)',
           }}>
@@ -101,9 +104,13 @@ export default function Nav({ t, lang, setLang }: NavProps) {
                 style={{
                   ...linkStyle,
                   padding: '2px 6px',
-                  color: lang === l ? 'var(--color-accent)' : 'var(--color-muted)',
+                  color: lang === l
+                    ? (onDark ? 'rgba(245,242,236,0.92)' : 'var(--color-accent)')
+                    : (onDark ? 'rgba(245,242,236,0.4)' : 'var(--color-muted)'),
                   fontWeight: lang === l ? 500 : 400,
-                  borderBottom: lang === l ? '1.5px solid var(--color-accent)' : '1.5px solid transparent',
+                  borderBottom: lang === l
+                    ? `1.5px solid ${onDark ? 'rgba(245,242,236,0.5)' : 'var(--color-accent)'}`
+                    : '1.5px solid transparent',
                   transition: 'color var(--duration)',
                 }}
               >
@@ -118,6 +125,7 @@ export default function Nav({ t, lang, setLang }: NavProps) {
           className={`nav-hamburger${menuOpen ? ' open' : ''}`}
           onClick={() => setMenuOpen(o => !o)}
           aria-label="Toggle menu"
+          style={{ color: onDark ? 'rgba(245,242,236,0.8)' : 'var(--color-ink)' }}
         >
           <span /><span /><span />
         </button>
