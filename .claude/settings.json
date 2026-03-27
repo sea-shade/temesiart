@@ -5,10 +5,35 @@
       "Bash(npm cache:*)",
       "Bash(npx tsc:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh run:*)",
+      "Bash(npm ci:*)",
+      "WebFetch(domain:sea-shade.github.io)",
+      "Bash(xargs ls:*)",
+      "Read(//Users/thelamb/code/apu/public/images/**)",
+      "Bash(curl -v \"http://www.temesi.hu/images/videogames/busytown.jpg\")",
+      "Bash(npm run:*)",
+      "WebFetch(domain:pozsgay.hu)",
+      "WebFetch(domain:www.behance.net)",
+      "Bash(npx react-scripts:*)"
     ],
     "additionalDirectories": [
-      "/Users/thelamb/code/apu/.github"
+      "/Users/thelamb/code/apu/.github",
+      "/Users/thelamb/code/apu/public/images/videogames"
+    ]
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code needs your attention\" with title \"Claude Code\"'"
+          }
+        ]
+      }
     ]
   }
 }

@@ -6,11 +6,18 @@ export interface GalleryImage {
   title?: string;
 }
 
+export interface PriceTier {
+  label: string;
+  huf: string;
+  eur: string;
+}
+
 export interface NavTranslations {
   portraits: string;
   fineArt: string;
   videoGames: string;
   bookCovers: string;
+  caricatureIllustration: string;
   about: string;
   contact: string;
 }
@@ -24,6 +31,14 @@ export interface HeroTranslations {
 export interface SectionTranslation {
   title: string;
   description: string;
+  prices?: PriceTier[];
+}
+
+export interface IllustrationSubcats {
+  all: string;
+  children: string;
+  historical: string;
+  cartoon: string;
 }
 
 export interface SectionsTranslations {
@@ -31,6 +46,8 @@ export interface SectionsTranslations {
   fineArt: SectionTranslation;
   videoGames: SectionTranslation;
   bookCovers: SectionTranslation;
+  caricatureIllustration: SectionTranslation;
+  illustrationSubcats: IllustrationSubcats;
 }
 
 export interface AboutTranslations {
@@ -62,4 +79,7 @@ export interface GalleryData {
   fineArt: GalleryImage[];
   videoGames: GalleryImage[];
   bookCovers: GalleryImage[];
+  illustrationChildren: GalleryImage[];
+  illustrationHistorical: GalleryImage[];
+  illustrationCartoon: GalleryImage[];
 }

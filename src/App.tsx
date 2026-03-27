@@ -3,6 +3,7 @@ import './styles/tokens.css';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
+import IllustrationSection from './components/IllustrationSection';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -39,6 +40,14 @@ export default function App() {
           section={t.sections.bookCovers}
           images={gallery.bookCovers}
           alt
+        />
+        <IllustrationSection
+          id="caricature-illustration"
+          section={t.sections.caricatureIllustration}
+          subcats={t.sections.illustrationSubcats}
+          children={gallery.illustrationChildren}
+          historical={gallery.illustrationHistorical}
+          cartoon={gallery.illustrationCartoon}
         />
         <About id="about" t={t} />
         <Contact id="contact" t={t} />

@@ -1,29 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
 
 :root {
   /* --- Palette ---
-     Warm gallery-wall tones. Not cold white, not aged paper.
-     Think: the walls of a well-lit contemporary gallery. */
-  --color-bg:        #f7f5f0;
+     Warm editorial, aged-paper classic. Like a well-kept atelier or
+     the walls of a Budapest gallery. Inspired by pozsgay.hu's warm neutrals. */
+  --color-bg:        #f5f2ec;
   --color-surface:   #edeae2;
-  --color-ink:       #1c1917;
-  --color-muted:     #78716a;
-  --color-accent:    #9a6444;   /* warm sienna — subtle, not aggressive */
-  --color-accent-lt: #c28660;
-  --color-border:    #dbd6cd;
-  --color-overlay:   rgba(10, 8, 6, 0.92);
+  --color-ink:       #1c1a16;
+  --color-muted:     #7a7068;
+  --color-accent:    #8b3a2a;   /* deep terracotta */
+  --color-accent-lt: #b8614e;
+  --color-border:    #dad5cc;
+  --color-overlay:   rgba(10, 8, 6, 0.93);
 
-  /* --- Typography --- */
-  --font-display: 'Playfair Display', Georgia, serif;
+  /* --- Typography ---
+     Cormorant Garamond: timeless serif for display/headings
+     Inter: clean sans for UI labels and body text */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-ui:      'Inter', system-ui, sans-serif;
 
-  --text-xs:   0.72rem;
-  --text-sm:   0.85rem;
+  --text-xs:   0.7rem;
+  --text-sm:   0.83rem;
   --text-base: 1rem;
   --text-lg:   1.15rem;
-  --text-xl:   1.55rem;
-  --text-2xl:  2.2rem;
-  --text-3xl:  3.6rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2.4rem;
+  --text-3xl:  3.8rem;
   --text-4xl:  5.5rem;
 
   /* --- Spacing --- */
@@ -104,11 +106,18 @@ button {
   align-items: start;
 }
 
+/* ============================================================
+   SECTION HEADER — editorial rule style (à la pozsgay.hu)
+   ============================================================ */
+
 .section-header {
   display: flex;
   align-items: baseline;
   gap: var(--space-6);
   margin-bottom: var(--space-16);
+  /* Thin rule above the section title, classic editorial touch */
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--color-ink);
 }
 
 .section-header-rule {
@@ -121,12 +130,55 @@ button {
   font-family: var(--font-ui);
   font-size: var(--text-sm);
   color: var(--color-muted);
-  max-width: 360px;
+  max-width: 340px;
   text-align: right;
   line-height: 1.6;
 }
 
-/* Nav */
+/* ============================================================
+   GALLERY GRID
+   ============================================================ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+  gap: 3px;
+}
+
+/* Caption overlay — appears on hover via JS (see Gallery.tsx) */
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-8) var(--space-4) var(--space-4);
+  background: linear-gradient(transparent, rgba(10,8,6,0.75));
+  color: rgba(245,242,236,0.9);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-sm);
+  opacity: 0;
+  transition: opacity 280ms var(--ease);
+  pointer-events: none;
+  letter-spacing: 0.02em;
+}
+
+figure:hover .gallery-caption {
+  opacity: 1;
+}
+
+/* ============================================================
+   SUBCATEGORY CARDS (IllustrationSection)
+   ============================================================ */
+
+.subcat-cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+
 .nav-links {
   display: flex;
   gap: var(--space-6);
@@ -164,6 +216,10 @@ button {
 .nav-mobile-menu {
   display: none;
 }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
 @media (max-width: 800px) {
   .nav-links {
@@ -213,5 +269,15 @@ button {
 
   .section-pad {
     padding: var(--space-16) clamp(var(--space-4), 5vw, var(--space-8));
+  }
+
+  .subcat-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .subcat-cards {
+    grid-template-columns: 1fr;
   }
 }

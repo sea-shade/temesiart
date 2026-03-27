@@ -29,6 +29,7 @@ export default function Nav({ t, lang, setLang }: NavProps) {
     ['#fine-art', nav.fineArt],
     ['#video-games', nav.videoGames],
     ['#book-covers', nav.bookCovers],
+    ['#caricature-illustration', nav.caricatureIllustration],
     ['#about', nav.about],
     ['#contact', nav.contact],
   ];

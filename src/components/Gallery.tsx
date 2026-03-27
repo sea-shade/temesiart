@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GalleryImage, SectionTranslation } from '../types';
+import { GalleryImage, PriceTier, SectionTranslation } from '../types';
 
 interface LightBoxProps {
   image: GalleryImage | null;
@@ -57,7 +57,6 @@ function LightBox({ image, onClose }: LightBoxProps) {
             {image.title}
           </p>
         )}
-        {/* Close hint */}
         <p style={{
           marginTop: 'var(--space-4)',
           fontFamily: 'var(--font-ui)',
@@ -69,6 +68,66 @@ function LightBox({ image, onClose }: LightBoxProps) {
           click to close
         </p>
       </div>
+    </div>
+  );
+}
+
+function PriceBlock({ prices }: { prices: PriceTier[] }) {
+  return (
+    <div style={{
+      marginBottom: 'var(--space-16)',
+      borderTop: '1px solid var(--color-border)',
+      borderBottom: '1px solid var(--color-border)',
+      padding: 'var(--space-6) 0',
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: 'var(--space-2) var(--space-12)',
+    }}>
+      <span style={{
+        fontFamily: 'var(--font-ui)',
+        fontSize: 'var(--text-xs)',
+        letterSpacing: '0.12em',
+        textTransform: 'uppercase',
+        color: 'var(--color-muted)',
+        paddingRight: 'var(--space-8)',
+        alignSelf: 'center',
+        flexShrink: 0,
+      }}>
+        Commission prices
+      </span>
+      {prices.map((tier, i) => (
+        <div key={i} style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}>
+          <span style={{
+            fontFamily: 'var(--font-ui)',
+            fontSize: 'var(--text-xs)',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: 'var(--color-muted)',
+          }}>
+            {tier.label}
+          </span>
+          <span style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'var(--text-lg)',
+            fontWeight: 400,
+            color: 'var(--color-ink)',
+            letterSpacing: '-0.01em',
+          }}>
+            {tier.huf}
+          </span>
+          <span style={{
+            fontFamily: 'var(--font-ui)',
+            fontSize: 'var(--text-xs)',
+            color: 'var(--color-accent)',
+          }}>
+            {tier.eur}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -114,12 +173,13 @@ export default function Gallery({ id, section, images, alt }: GalleryProps) {
           </p>
         </div>
 
+        {/* Price block */}
+        {section.prices && section.prices.length > 0 && (
+          <PriceBlock prices={section.prices} />
+        )}
+
         {/* Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(min(260px, 100%), 1fr))',
-          gap: 'var(--space-4)',
-        }}>
+        <div className="gallery-grid">
           {images.map((img, i) => (
             <figure
               key={i}
@@ -144,7 +204,7 @@ export default function Gallery({ id, section, images, alt }: GalleryProps) {
                   transition: 'transform 600ms var(--ease)',
                   display: 'block',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+                onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
                 onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 onError={e => {
                   if (e.currentTarget.parentElement) {
@@ -153,27 +213,8 @@ export default function Gallery({ id, section, images, alt }: GalleryProps) {
                   e.currentTarget.style.display = 'none';
                 }}
               />
-              {/* Caption overlay — appears on hover */}
               {img.title && (
-                <figcaption
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    padding: 'var(--space-6) var(--space-4) var(--space-4)',
-                    background: 'linear-gradient(transparent, rgba(10,8,6,0.72))',
-                    color: 'rgba(247,245,240,0.9)',
-                    fontFamily: 'var(--font-display)',
-                    fontStyle: 'italic',
-                    fontSize: 'var(--text-sm)',
-                    opacity: 0,
-                    transition: 'opacity 300ms var(--ease)',
-                    pointerEvents: 'none',
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
-                  onMouseLeave={e => (e.currentTarget.style.opacity = '0')}
-                >
+                <figcaption className="gallery-caption">
                   {img.title}
                 </figcaption>
               )}
