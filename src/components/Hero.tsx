@@ -26,7 +26,7 @@ export default function Hero({ t }: HeroProps) {
       <div style={{
         position: 'absolute',
         inset: 0,
-        backgroundImage: `url(${BASE_PATH}/images/akvarell/Zaszlo_III.jpg)`,
+        backgroundImage: `url(${BASE_PATH}/images/aquarel/Zaszlo_III.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center 30%',
         zIndex: 0,
