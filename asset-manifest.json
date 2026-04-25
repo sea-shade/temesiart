@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/temesiart/static/css/main.33b32fbe.css",
+    "main.js": "/temesiart/static/js/main.9c763a81.js",
+    "index.html": "/temesiart/index.html",
+    "main.33b32fbe.css.map": "/temesiart/static/css/main.33b32fbe.css.map",
+    "main.9c763a81.js.map": "/temesiart/static/js/main.9c763a81.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.33b32fbe.css",
+    "static/js/main.9c763a81.js"
+  ]
+}
