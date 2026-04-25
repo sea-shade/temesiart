@@ -23,23 +23,27 @@ export default function App() {
           id="portraits"
           section={t.sections.portraits}
           images={gallery.portraits}
+          contactEmail={t.contact.email}
         />
         <Gallery
           id="fine-art"
           section={t.sections.fineArt}
           images={gallery.fineArt}
           alt
+          contactEmail={t.contact.email}
         />
         <Gallery
           id="video-games"
           section={t.sections.videoGames}
           images={gallery.videoGames}
+          contactEmail={t.contact.email}
         />
         <Gallery
           id="book-covers"
           section={t.sections.bookCovers}
           images={gallery.bookCovers}
           alt
+          contactEmail={t.contact.email}
         />
         <IllustrationSection
           id="caricature-illustration"
@@ -49,6 +53,7 @@ export default function App() {
           historical={gallery.illustrationHistorical}
           cartoon={gallery.illustrationCartoon}
           nature={gallery.illustrationNature}
+          contactEmail={t.contact.email}
         />
         <About id="about" t={t} />
         <Contact id="contact" t={t} />

@@ -192,9 +192,10 @@ interface GalleryProps {
   section: SectionTranslation;
   images: GalleryImage[];
   alt?: boolean;
+  contactEmail?: string;
 }
 
-export default function Gallery({ id, section, images, alt }: GalleryProps) {
+export default function Gallery({ id, section, images, alt, contactEmail }: GalleryProps) {
   // Index into `images` (full list) — navigation always covers all images
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [expanded, setExpanded] = useState(false);
@@ -232,9 +233,28 @@ export default function Gallery({ id, section, images, alt }: GalleryProps) {
             {section.title}
           </h2>
           <div className="section-header-rule" />
-          <p className="section-header-desc">
-            {section.description}
-          </p>
+          <div className="section-header-desc">
+            <p>{section.description}</p>
+            {contactEmail && (
+              <a
+                href={`mailto:${contactEmail}`}
+                style={{
+                  display: 'inline-block',
+                  marginTop: 'var(--space-3)',
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 'var(--text-xs)',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-accent)',
+                  transition: 'color var(--duration)',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent-lt)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-accent)')}
+              >
+                Get in touch →
+              </a>
+            )}
+          </div>
         </div>
 
         {/* Price block */}

@@ -39,7 +39,7 @@ export const i18n: Record<Lang, Translations> = {
       fineArt: {
         title: "Fine Art",
         description:
-          "Watercolour, etching, digital art. Works shown in exhibitions across Budapest and Hungary since 1987.",
+          "Watercolour, etching, digital art. Works shown in exhibitions across Budapest and Hungary since 1987. Original pieces are available for purchase; works in a similar style can be commissioned.",
       },
       videoGames: {
         title: "Video Games & Concept Art",
@@ -124,7 +124,7 @@ Member of the Association of Hungarian Fine Artists.`,
       fineArt: {
         title: "Képzőművészet",
         description:
-          "Akvarell, rézkarc, digitális grafika. 1987 óta kiállítva Budapesten és Magyarország-szerte.",
+          "Akvarell, rézkarc, digitális grafika. 1987 óta kiállítva Budapesten és Magyarország-szerte. Az eredeti alkotások megvásárolhatók; hasonló stílusban megrendelésre is készülnek munkák.",
       },
       videoGames: {
         title: "Videojátékok és Concept Art",

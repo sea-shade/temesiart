@@ -131,6 +131,7 @@ interface IllustrationSectionProps {
   cartoon: GalleryImage[];
   nature: GalleryImage[];
   alt?: boolean;
+  contactEmail?: string;
 }
 
 export default function IllustrationSection({
@@ -142,6 +143,7 @@ export default function IllustrationSection({
   cartoon,
   nature,
   alt,
+  contactEmail,
 }: IllustrationSectionProps) {
   const [active, setActive] = useState<SubcatKey>('all');
   // Index into allVisible — navigation covers the full current filter set
@@ -215,9 +217,28 @@ export default function IllustrationSection({
             {section.title}
           </h2>
           <div className="section-header-rule" />
-          <p className="section-header-desc">
-            {section.description}
-          </p>
+          <div className="section-header-desc">
+            <p>{section.description}</p>
+            {contactEmail && (
+              <a
+                href={`mailto:${contactEmail}`}
+                style={{
+                  display: 'inline-block',
+                  marginTop: 'var(--space-3)',
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: 'var(--text-xs)',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-accent)',
+                  transition: 'color var(--duration)',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-accent-lt)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-accent)')}
+              >
+                Get in touch →
+              </a>
+            )}
+          </div>
         </div>
 
         {/* Subcategory category cards (pozsgay.hu style) */}
