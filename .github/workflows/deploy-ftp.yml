@@ -19,6 +19,8 @@ jobs:
       - run: npm ci
 
       - run: npm run build
+        env:
+          PUBLIC_URL: /
 
       - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -26,4 +28,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/
-          server-dir: /html/
+          server-dir: /temesi.hu/html/

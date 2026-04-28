@@ -7,7 +7,7 @@
 
 import { GalleryData, Lang, Translations } from '../types';
 
-export const BASE_PATH = "/temesiart";
+export const BASE_PATH = (process.env.PUBLIC_URL || '').replace(/\/$/, '');
 
 export const i18n: Record<Lang, Translations> = {
   en: {
