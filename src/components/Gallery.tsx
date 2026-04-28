@@ -33,7 +33,7 @@ function LightBox({ image, onClose, onPrev, onNext, hasPrev, hasNext }: LightBox
       style={{
         position: 'absolute',
         top: '50%',
-        [side]: 'clamp(var(--space-2), 3vw, var(--space-6))',
+        [side]: 'var(--space-4)',
         transform: 'translateY(-50%)',
         background: 'rgba(245,242,236,0.08)',
         border: '1px solid rgba(245,242,236,0.18)',
@@ -65,13 +65,13 @@ function LightBox({ image, onClose, onPrev, onNext, hasPrev, hasNext }: LightBox
       onClick={onClose}
       style={{
         position: 'fixed',
-        inset: 0,
+        top: 0, right: 0, bottom: 0, left: 0,
         zIndex: 999,
         background: 'var(--color-overlay)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 'clamp(var(--space-4), 5vw, var(--space-8))',
+        padding: 'var(--space-4)',
         cursor: 'zoom-out',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
@@ -136,7 +136,6 @@ function PriceBlock({ prices }: { prices: PriceTier[] }) {
       padding: 'var(--space-6) 0',
       display: 'flex',
       flexWrap: 'wrap',
-      gap: 'var(--space-2) var(--space-12)',
     }}>
       <span style={{
         fontFamily: 'var(--font-ui)',
@@ -154,7 +153,8 @@ function PriceBlock({ prices }: { prices: PriceTier[] }) {
         <div key={i} style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 2,
+          marginLeft: 'var(--space-12)',
+          marginBottom: 'var(--space-2)',
         }}>
           <span style={{
             fontFamily: 'var(--font-ui)',
@@ -272,7 +272,7 @@ export default function Gallery({ id, section, images, alt, contactEmail }: Gall
                 cursor: 'zoom-in',
                 overflow: 'hidden',
                 background: 'var(--color-border)',
-                aspectRatio: '4/5',
+                paddingBottom: '125%',
                 position: 'relative',
                 margin: 0,
               }}
@@ -282,6 +282,9 @@ export default function Gallery({ id, section, images, alt, contactEmail }: Gall
                 alt={img.alt}
                 loading="lazy"
                 style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',

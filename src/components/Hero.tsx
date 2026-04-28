@@ -17,7 +17,7 @@ export default function Hero({ t }: HeroProps) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        padding: `var(--space-32) clamp(var(--space-4), 5vw, var(--space-8)) var(--space-24)`,
+        padding: `var(--space-32) var(--space-8) var(--space-24)`,
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -25,7 +25,7 @@ export default function Hero({ t }: HeroProps) {
       {/* Background artwork — full bleed */}
       <div style={{
         position: 'absolute',
-        inset: 0,
+        top: 0, right: 0, bottom: 0, left: 0,
         backgroundImage: `url(${BASE_PATH}/images/aquarel/Zaszlo_III.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center 30%',
@@ -36,7 +36,7 @@ export default function Hero({ t }: HeroProps) {
           lets the artwork breathe in the upper-right */}
       <div style={{
         position: 'absolute',
-        inset: 0,
+        top: 0, right: 0, bottom: 0, left: 0,
         background: `
           linear-gradient(
             to top,
@@ -79,7 +79,7 @@ export default function Hero({ t }: HeroProps) {
         {/* Name — same style, light on dark */}
         <h1 style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(var(--text-3xl), 8.5vw, var(--text-4xl))',
+          fontSize: 'var(--text-3xl)',
           fontWeight: 400,
           lineHeight: 1.02,
           letterSpacing: '-0.02em',
@@ -93,7 +93,7 @@ export default function Hero({ t }: HeroProps) {
         <p style={{
           fontFamily: 'var(--font-display)',
           fontStyle: 'italic',
-          fontSize: 'clamp(var(--text-lg), 2.5vw, var(--text-xl))',
+          fontSize: 'var(--text-lg)',
           color: 'rgba(245, 242, 236, 0.62)',
           fontWeight: 400,
           marginBottom: 'var(--space-3)',
@@ -119,7 +119,7 @@ export default function Hero({ t }: HeroProps) {
       <div style={{
         position: 'absolute',
         bottom: 'var(--space-8)',
-        right: 'clamp(var(--space-4), 5vw, var(--space-8))',
+        right: 'var(--space-8)',
         zIndex: 2,
         display: 'flex',
         flexDirection: 'column',

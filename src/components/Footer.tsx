@@ -8,14 +8,13 @@ interface FooterProps {
 export default function Footer({ t: _t }: FooterProps) {
   return (
     <footer style={{
-      padding: 'var(--space-6) clamp(var(--space-4), 5vw, var(--space-8))',
+      padding: 'var(--space-6) var(--space-8)',
       background: 'var(--color-ink)',
       borderTop: '1px solid rgba(247,245,240,0.07)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       flexWrap: 'wrap',
-      gap: 'var(--space-2)',
     }}>
       <span style={{
         fontFamily: 'var(--font-display)',
