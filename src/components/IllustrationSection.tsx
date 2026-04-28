@@ -33,7 +33,7 @@ function LightBox({ image, onClose, onPrev, onNext, hasPrev, hasNext }: LightBox
       style={{
         position: 'absolute',
         top: '50%',
-        [side]: 'clamp(var(--space-2), 3vw, var(--space-6))',
+        [side]: 'var(--space-4)',
         transform: 'translateY(-50%)',
         background: 'rgba(245,242,236,0.08)',
         border: '1px solid rgba(245,242,236,0.18)',
@@ -65,13 +65,13 @@ function LightBox({ image, onClose, onPrev, onNext, hasPrev, hasNext }: LightBox
       onClick={onClose}
       style={{
         position: 'fixed',
-        inset: 0,
+        top: 0, right: 0, bottom: 0, left: 0,
         zIndex: 999,
         background: 'var(--color-overlay)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 'clamp(var(--space-4), 5vw, var(--space-8))',
+        padding: 'var(--space-4)',
         cursor: 'zoom-out',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
@@ -257,13 +257,15 @@ export default function IllustrationSection({
               style={{
                 position: 'relative',
                 overflow: 'hidden',
-                aspectRatio: '3/2',
+                paddingTop: 0,
+                paddingRight: 0,
+                paddingLeft: 0,
+                paddingBottom: '66.67%',
                 background: 'var(--color-border)',
                 border: active === key
                   ? '2px solid var(--color-accent)'
                   : '2px solid transparent',
                 cursor: 'pointer',
-                padding: 0,
                 display: 'block',
                 transition: 'border-color var(--duration) var(--ease)',
               }}
@@ -274,7 +276,7 @@ export default function IllustrationSection({
                   alt={cover.alt}
                   style={{
                     position: 'absolute',
-                    inset: 0,
+                    top: 0, right: 0, bottom: 0, left: 0,
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
@@ -288,7 +290,7 @@ export default function IllustrationSection({
               {/* Gradient overlay */}
               <div style={{
                 position: 'absolute',
-                inset: 0,
+                top: 0, right: 0, bottom: 0, left: 0,
                 background: 'linear-gradient(to top, rgba(10,8,6,0.7) 0%, rgba(10,8,6,0.15) 60%, transparent 100%)',
               }} />
               <span style={{
@@ -325,7 +327,6 @@ export default function IllustrationSection({
         {/* Filter pills */}
         <div style={{
           display: 'flex',
-          gap: 'var(--space-2)',
           marginBottom: 'var(--space-8)',
           flexWrap: 'wrap',
         }}>
@@ -339,6 +340,8 @@ export default function IllustrationSection({
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
                 padding: '6px 14px',
+                marginRight: 'var(--space-2)',
+                marginBottom: 'var(--space-2)',
                 border: '1px solid',
                 borderColor: active === tab.key ? 'var(--color-accent)' : 'var(--color-border)',
                 color: active === tab.key ? 'var(--color-accent)' : 'var(--color-muted)',
@@ -363,7 +366,7 @@ export default function IllustrationSection({
                   cursor: 'zoom-in',
                   overflow: 'hidden',
                   background: 'var(--color-border)',
-                  aspectRatio: '4/5',
+                  paddingBottom: '125%',
                   position: 'relative',
                   margin: 0,
                 }}
@@ -373,6 +376,9 @@ export default function IllustrationSection({
                   alt={img.alt}
                   loading="lazy"
                   style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',

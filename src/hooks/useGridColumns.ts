@@ -20,13 +20,19 @@ export function useGridColumns(ref: React.RefObject<HTMLDivElement>): number {
       return n < 3 ? 4 : n;
     }
 
-    const observer = new ResizeObserver(entries => {
-      setCols(compute(entries[0].contentRect.width));
-    });
-
-    observer.observe(el);
-    setCols(compute(el.offsetWidth));
-    return () => observer.disconnect();
+    if (typeof ResizeObserver !== 'undefined') {
+      const observer = new ResizeObserver(entries => {
+        setCols(compute(entries[0].contentRect.width));
+      });
+      observer.observe(el);
+      setCols(compute(el.offsetWidth));
+      return () => observer.disconnect();
+    } else {
+      function onResize() { setCols(compute(el.offsetWidth)); }
+      window.addEventListener('resize', onResize);
+      setCols(compute(el.offsetWidth));
+      return () => window.removeEventListener('resize', onResize);
+    }
   }, []);
 
   return cols;

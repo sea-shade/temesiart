@@ -45,7 +45,7 @@ export default function Contact({ id, t }: ContactProps) {
           <p style={{
             fontFamily: 'var(--font-display)',
             fontStyle: 'italic',
-            fontSize: 'clamp(var(--text-lg), 2.2vw, var(--text-xl))',
+            fontSize: 'var(--text-lg)',
             lineHeight: 1.65,
             color: 'rgba(247,245,240,0.6)',
           }}>
@@ -53,7 +53,7 @@ export default function Contact({ id, t }: ContactProps) {
           </p>
 
           {/* Contact details */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div>
               <p style={{
                 fontFamily: 'var(--font-ui)',
@@ -89,7 +89,7 @@ export default function Contact({ id, t }: ContactProps) {
               </a>
             </div>
 
-            <div>
+            <div style={{ marginTop: 'var(--space-8)' }}>
               <p style={{
                 fontFamily: 'var(--font-ui)',
                 fontSize: 'var(--text-xs)',

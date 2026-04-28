@@ -58,7 +58,7 @@ export default function Nav({ t, lang, setLang }: NavProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 clamp(var(--space-4), 5vw, var(--space-8))',
+        padding: '0 var(--space-8)',
         background: (scrolled || menuOpen) ? 'var(--color-bg)' : 'transparent',
         borderBottom: (scrolled || menuOpen) ? '1px solid var(--color-border)' : '1px solid transparent',
         transition: 'background var(--duration) var(--ease), border-color var(--duration) var(--ease)',
@@ -92,7 +92,6 @@ export default function Nav({ t, lang, setLang }: NavProps) {
           {/* Language toggle */}
           <div style={{
             display: 'flex',
-            gap: '2px',
             borderLeft: `1px solid ${onDark ? 'rgba(245,242,236,0.15)' : 'var(--color-border)'}`,
             paddingLeft: 'var(--space-6)',
             marginLeft: 'var(--space-2)',
@@ -151,8 +150,8 @@ export default function Nav({ t, lang, setLang }: NavProps) {
               {label}
             </a>
           ))}
-          <div style={{ display: 'flex', gap: 'var(--space-4)', marginTop: 'var(--space-4)' }}>
-            {(['en', 'hu'] as Lang[]).map(l => (
+          <div style={{ display: 'flex', marginTop: 'var(--space-4)' }}>
+            {(['en', 'hu'] as Lang[]).map((l, i) => (
               <button
                 key={l}
                 onClick={() => { setLang(l); setMenuOpen(false); }}
@@ -165,6 +164,7 @@ export default function Nav({ t, lang, setLang }: NavProps) {
                   padding: '2px 4px',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
+                  marginLeft: i > 0 ? 'var(--space-4)' : undefined,
                 }}
               >
                 {l.toUpperCase()}
