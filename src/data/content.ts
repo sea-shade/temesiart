@@ -231,7 +231,9 @@ export const gallery: GalleryData = {
   ],
   videoGames: [
     { src: img("/images/pixel/01.jpg"), alt: "Video game graphic", title: "Game Art I" },
+    { src: img("/images/pixel/02.jpg"), alt: "Video game graphic", title: "Game Art II" },
     { src: img("/images/pixel/03.jpg"), alt: "Video game graphic", title: "Game Art III" },
+    { src: img("/images/pixel/04.jpg"), alt: "Video game graphic", title: "Game Art IV" },
     { src: img("/images/pixel/05.jpg"), alt: "Video game graphic", title: "Game Art V" },
     { src: img("/images/pixel/07.jpg"), alt: "Video game graphic", title: "Game Art VII" },
     { src: img("/images/pixel/09.jpg"), alt: "Video game graphic", title: "Game Art IX" },
