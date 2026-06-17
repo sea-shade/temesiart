@@ -242,7 +242,7 @@ export const gallery: GalleryData = {
     { src: img("/images/pixel/13.jpg"), alt: "Video game graphic", title: "Game Art XIII" },
     { src: img("/images/pixel/aeroplan_300.jpg"), alt: "Aeroplane pixel art", title: "Aeroplane" },
     { src: img("/images/pixel/flash_game_bgr.jpg"), alt: "Flash game background", title: "Flash Game Background" },
-    { src: img("/images/pixel/game_menu.jpg"), alt: "Game menu design", title: "Game Menu" },
+    { src: img("/images/pixel/game_menu.jpg"), alt: "Game menu design", title: "Game Menu Design" },
     { src: img("/images/videogames/videogameconcept.jpg"), alt: "Video game concept art", title: "Concept Art I" },
     { src: img("/images/videogames/videogameconcept_2.jpg"), alt: "Video game concept art II", title: "Concept Art II" },
     { src: img("/images/videogames/videogameconcept_3.jpg"), alt: "Video game concept art III", title: "Concept Art III" },
