@@ -195,8 +195,8 @@ A Magyar Alkotóművészek Országos Egyesületének tagja.`,
 
 export const gallery: GalleryData = {
   portraits: [
-    { src: img("/images/portrait/babas_csalad_800.jpg"), alt: "Family portrait", title: "Family" },
     { src: img("/images/portrait/gyerekek_keszkep_800.jpg"), alt: "Children portrait", title: "Children" },
+    { src: img("/images/portrait/babas_csalad_800.jpg"), alt: "Family portrait", title: "Family" },
     { src: img("/images/portrait/szulok_kettos_Temesi_2010_800.jpg"), alt: "Double portrait of parents", title: "Parents" },
     { src: img("/images/portrait/testverek_Temesi_2010_800.jpg"), alt: "Siblings portrait", title: "Siblings" },
     { src: img("/images/portrait/testverek_800.jpg"), alt: "Pastel siblings", title: "Siblings — Pastel" },
