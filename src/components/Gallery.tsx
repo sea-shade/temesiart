@@ -270,41 +270,50 @@ export default function Gallery({ id, section, images, alt, contactEmail }: Gall
               onClick={() => setActiveIndex(i)}
               style={{
                 cursor: 'zoom-in',
-                overflow: 'hidden',
-                background: 'var(--color-border)',
                 paddingBottom: '125%',
                 position: 'relative',
                 margin: 0,
+                borderRadius: 6,
+                border: '1px solid var(--color-border)',
+                boxShadow: '0 6px 28px rgba(4,90,130,0.45), 0 1px 4px rgba(255,255,255,0.05)',
               }}
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                loading="lazy"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'transform 600ms var(--ease)',
-                  display: 'block',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-                onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-                onError={e => {
-                  if (e.currentTarget.parentElement) {
-                    e.currentTarget.parentElement.style.background = 'var(--color-surface)';
-                  }
-                  e.currentTarget.style.display = 'none';
-                }}
-              />
-              {img.title && (
-                <figcaption className="gallery-caption">
-                  {img.title}
-                </figcaption>
-              )}
+              {/* inner div clips the zoom animation without cutting off the card shadow */}
+              <div style={{
+                position: 'absolute',
+                top: 0, left: 0, right: 0, bottom: 0,
+                overflow: 'hidden',
+                borderRadius: 6,
+                background: 'var(--color-border)',
+              }}>
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 600ms var(--ease)',
+                    display: 'block',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+                  onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                  onError={e => {
+                    const inner = e.currentTarget.parentElement;
+                    if (inner) inner.style.background = 'var(--color-surface)';
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                {img.title && (
+                  <figcaption className="gallery-caption">
+                    {img.title}
+                  </figcaption>
+                )}
+              </div>
             </figure>
           ))}
         </div>

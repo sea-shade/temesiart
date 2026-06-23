@@ -14,7 +14,7 @@ export default function Contact({ id, t }: ContactProps) {
       id={id}
       className="section-pad"
       style={{
-        background: 'var(--color-ink)',
+        background: 'var(--color-surface)',
         borderTop: '1px solid var(--color-border)',
       }}
     >

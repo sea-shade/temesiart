@@ -2,16 +2,15 @@
 
 :root {
   /* --- Palette ---
-     Warm editorial, aged-paper classic. Like a well-kept atelier or
-     the walls of a Budapest gallery. Inspired by pozsgay.hu's warm neutrals. */
-  --color-bg:        #f5f2ec;
-  --color-surface:   #edeae2;
-  --color-ink:       #1c1a16;
-  --color-muted:     #7a7068;
-  --color-accent:    #8b3a2a;   /* deep terracotta */
-  --color-accent-lt: #b8614e;
-  --color-border:    #dad5cc;
-  --color-overlay:   rgba(10, 8, 6, 0.93);
+     Deep ocean editorial — dark teal atelier. */
+  --color-bg:        #04171f;
+  --color-surface:   #071e28;
+  --color-ink:       #e8e4dc;
+  --color-muted:     #7aa0ab;
+  --color-accent:    #c0705a;   /* terracotta, lightened for dark bg */
+  --color-accent-lt: #d48870;
+  --color-border:    #153040;
+  --color-overlay:   rgba(0, 4, 8, 0.96);
 
   /* --- Typography ---
      Cormorant Garamond: timeless serif for display/headings
@@ -22,11 +21,11 @@
   --text-xs:   0.7rem;
   --text-sm:   0.83rem;
   --text-base: 1rem;
-  --text-lg:   1.15rem;
-  --text-xl:   1.5rem;
-  --text-2xl:  2.4rem;
-  --text-3xl:  3.8rem;
-  --text-4xl:  5.5rem;
+  --text-lg:   clamp(1.15rem, 1.2vw, 1.4rem);
+  --text-xl:   clamp(1.5rem, 1.6vw, 2rem);
+  --text-2xl:  clamp(2.4rem, 3vw, 4rem);
+  --text-3xl:  clamp(3.8rem, 5vw, 6rem);
+  --text-4xl:  clamp(5.5rem, 7vw, 9rem);
 
   /* --- Spacing --- */
   --space-1:  0.25rem;
@@ -150,7 +149,7 @@ button {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 3px;
+  gap: var(--space-6);
 }
 
 /* Caption overlay — appears on hover via JS (see Gallery.tsx) */
