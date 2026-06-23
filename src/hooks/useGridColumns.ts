@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-// Matches the gallery-grid CSS: repeat(auto-fill, minmax(240px, 1fr)) with gap: 3px
+// Matches the gallery-grid CSS: repeat(auto-fill, minmax(240px, 1fr)) with gap: var(--space-6) = 24px
 const MIN_ITEM_WIDTH = 240;
-const GAP = 3;
+const GAP = 24;
 
 /**
  * Returns how many grid columns fit in the observed element.
